@@ -38,6 +38,12 @@ int size(Node *head) {
     return count;
 }
 
+int insert_at_head(Node *&head, int val) {
+    Node *newNode = new Node(val);
+    newNode->next = head;
+    head = newNode;
+}
+
 int main() {
     Node* head = new Node(10);
     Node *a = new Node(20);
@@ -59,6 +65,8 @@ int main() {
     cin>>pos>>val;
     if (pos>size(head)) {
         cout<<"Invalid index"<<endl;
+    } else if (pos == 0) {
+        insert_at_head(head, 5);
     } else {
         insert_any_position(head, pos, val);
     }
