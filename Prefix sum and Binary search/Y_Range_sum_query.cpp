@@ -1,24 +1,24 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 int main() {
-    int N, Q;
-    cin >> N >> Q;
-    vector<int> A(N);
-    for(int i=0;i<N;i++) {
-        cin >> A[i];
-    }
+    int n, q;
+    cin>>n>>q;
 
-    long long sum = 0;
-    for(int q=0;q<Q;q++) {
-        int L, R;
-        cin >> L >> R;
-        for(int i=L-1;i<R;i++) {
-            sum+=A[i];
+    int a[n];
+    for(int i=0;i<n;i++) {
+        cin>>a[i];
+    }
+    while(q--) {
+        int l, r;
+        cin>>l>>r;
+        l--;
+        r--;
+        int sum = 0;
+        for(int i=l;i<=r;i++) {
+            sum += a[i];
         }
-        cout << sum << endl;
+        cout<<sum<<endl;
     }
-
 
     return 0;
 }
