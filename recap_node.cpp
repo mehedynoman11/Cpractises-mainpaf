@@ -38,10 +38,22 @@ int size(Node *head) {
     return count;
 }
 
-int insert_at_head(Node *&head, int val) {
+void insert_at_head(Node *&head, int val) {
     Node *newNode = new Node(val);
     newNode->next = head;
     head = newNode;
+}
+
+void insert_at_tail(Node *&head ,Node *tail ,int val) {
+    Node *newNode = new Node(val);
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    tail = newNode;
+
 }
 
 int main() {
@@ -51,7 +63,7 @@ int main() {
     Node *c = new Node(40);
     Node *d = new Node(50);
     Node *e = new Node(60);
-
+    Node *tail = e;
     head->next = a;
     a->next = b;
     b->next = c;
@@ -66,12 +78,14 @@ int main() {
     if (pos>size(head)) {
         cout<<"Invalid index"<<endl;
     } else if (pos == 0) {
-        insert_at_head(head, 5);
+        insert_at_head(head, val);
+    } else if (pos == size(head)) {
+        insert_at_tail(head,tail,val);
     } else {
         insert_any_position(head, pos, val);
     }
     print_linked_list(head);
-
+    cout<<"Tail is := "<<tail->val<<endl;
 
     return 0;
 }
